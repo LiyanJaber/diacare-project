@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia-Care | Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root { --teal: #2C7A7B; --red: #E53E3E; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; }
+        .disclaimer { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; }
+        .tracker-box { background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); margin: 40px auto; max-width: 1000px; }
+        .sidebar { background: url('images/page3default.png') center/cover; min-height: 500px; }
+        .result-card { display: none; padding: 20px; border-radius: 12px; margin-top: 15px; border-left: 10px solid; }
+        .btn-teal { background: var(--teal); color: white; width: 100%; padding: 15px; border-radius: 10px; border: none; font-weight: 600; margin-top: 10px; }
+        .input-label { font-weight: 600; color: #4A5568; margin-bottom: 5px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="disclaimer">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT YOUR DOCTOR FOR MEDICAL DECISIONS.</div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" width="35"> DIA-CARE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="knowledge.html">Knowledge</a></li>
+                    <li><a class="nav-link" href="guide.html">Guide</a></li>
+                    <li><a class="nav-link active" href="tracker.html">Tracker</a></li>
+                    <li><a class="nav-link" href="motivation.html">Motivation</a></li>
+                    <li><a class="nav-link" href="portal.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row tracker-box g-0">
+            <div class="col-md-4 sidebar d-none d-md-block"></div>
+            <div class="col-md-8 p-5">
+                <h2 class="fw-bold mb-4" style="color: var(--teal);">Quick Level Check</h2>
+                <p class="text-muted">An easy way to check your daily sugar and long-term average.</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="input-label">Blood Sugar (mg/dL)</label>
+                        <input type="number" id="glu" class="form-control mb-3" placeholder="e.g. 100">
+                        
+                        <label class="input-label">Glycated Hemoglobin (HbA1c %)</label>
+                        <input type="number" id="hba" class="form-control mb-3" placeholder="e.g. 5.5" step="0.1">
+                        
+                        <button class="btn-teal" onclick="calc()">Analyze Now</button>
+                        
+                        <div id="gr" class="result-card"></div>
+                        <div id="hr" class="result-card"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="sugarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let historyData = []; let historyLabels = []; let chartInstance = null;
+        
+        function initChart() {
+            const ctx = document.getElementById('sugarChart').getContext('2d');
+            chartInstance = new Chart(ctx, { 
+                type: 'line', 
+                data: { labels: historyLabels, datasets: [{ label: 'Sugar Trend', data: historyData, borderColor: '#2C7A7B', fill: true, tension: 0.4 }] } 
+            });
+        }
+        initChart();
+
+        function calc() {
+            const g = parseFloat(document.getElementById('glu').value);
+            const h = parseFloat(document.getElementById('hba').value);
+            const gb = document.getElementById('gr');
+            const hb = document.getElementById('hr');
+            
+            // Analyze Blood Sugar
+            if(!isNaN(g)) {
+                gb.style.display="block";
+                if(g<70) show(gb,"🚨 LOW SUGAR","#e53e3e","#fff5f5","Eat 15g of fast sugar (juice or honey).");
+                else if(g<=140) show(gb,"✅ NORMAL SUGAR","#2f855a","#f0fff4","Your levels are within a healthy range.");
+                else show(gb,"🚨 HIGH SUGAR","#9b2c2c","#fff5f5","Drink water and avoid heavy carbs.");
+                
+                historyData.push(g); 
+                historyLabels.push("Entry "+historyData.length); 
+                chartInstance.update();
+            }
+
+            // Analyze HbA1c (Glycated Hemoglobin)
+            if(!isNaN(h)) {
+                hb.style.display="block";
+                if(h < 5.7) show(hb,"✅ NORMAL HbA1c","#2f855a","#f0fff4","Excellent long-term control.");
+                else if(h <= 6.4) show(hb,"⚠️ PREDIABETES HbA1c","#dd6b20","#fffaf0","Higher than average. Watch your diet.");
+                else show(hb,"🚨 DIABETES LEVEL","#9b2c2c","#fff5f5","This indicates diabetes range. Consult your doctor.");
+            }
+        }
+
+        function show(b,s,c,bg,t) { 
+            b.style.borderColor=c; 
+            b.style.backgroundColor=bg; 
+            b.innerHTML=`<h6 style="color:${c}; font-weight:bold;">${s}</h6><p class="small m-0">${t}</p>`; 
+        }
+    </script>
+</body>
+</html>
