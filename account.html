@@ -4,20 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | My Account</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --teal: #2C7A7B; --red: #E53E3E; }
-        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; }
-        .account-card { background: white; border-radius: 20px; padding: 40px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--teal); }
-        .user-icon { font-size: 80px; color: var(--teal); margin-bottom: 20px; }
-        .stats-box { background: #f0fdfa; border-radius: 12px; padding: 20px; border: 1px dashed var(--teal); }
-        .btn-teal { background: var(--teal); color: white; border: none; }
-        .btn-teal:hover { background: #236162; color: white; }
-    </style>
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
@@ -66,18 +60,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.account-card').hide().fadeIn(800);
-
-            // Get the email from login session
-            const savedEmail = sessionStorage.getItem("userEmail") || "Guest User";
-            $('#displayEmail').text(savedEmail);
-        });
-
-        function fakeUpdate() {
-            $('#updateMessage').fadeIn().delay(2000).fadeOut();
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
