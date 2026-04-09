@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    // 1. Global Page Transitions
+    // Smooth fade in
     $('body').hide().fadeIn(800);
 
-    // 2. Navbar Scroll Effect
+    // Navbar scroll effect
     $(window).scroll(function() {
         if ($(this).scrollTop() > 50) {
             $('.navbar').css('background-color', '#E6FFFA');
@@ -11,14 +11,13 @@ $(document).ready(function(){
         }
     });
 
-    // 3. Account Page: Display Logged-in User
-    if($('#displayEmail').length) {
+    // Account page logic (Checks if the email display exists first)
+    if($('#displayEmail').length > 0) {
         const savedEmail = sessionStorage.getItem("userEmail") || "Guest User";
         $('#displayEmail').text(savedEmail);
     }
 });
 
-// 4. Update Account Simulation
 function fakeUpdate() {
     $('#updateMessage').fadeIn().delay(2000).fadeOut();
 }
