@@ -1,64 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | Home</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #1A365D;}
-        body { font-family: 'Poppins', sans-serif; background: #fcfcfc; color: #333; }
-        
-        /* The Red Medical Disclaimer */
-        .disclaimer { 
-            background: #FFF5F5; border-bottom: 3px solid var(--red); 
-            color: var(--red); padding: 12px; text-align: center; 
-            font-weight: bold; position: sticky; top: 0; z-index: 2000; 
-        }
-
-        .navbar-brand img { width: 40px; margin-right: 10px; }
-        
-        /* The Hero Section */
-        .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/page1default.png') center/cover;
-            height: 85vh; display: flex; align-items: center; color: white;
-        }
-
-        .btn-teal { 
-            background: var(--teal); color: white; border-radius: 30px; 
-            padding: 15px 40px; text-decoration: none; font-weight: 600; 
-            display: inline-block; transition: 0.3s; border: none; font-size: 1.1rem;
-        }
-        .btn-teal:hover { background: var(--dark); color: white; transform: translateY(-3px); }
-        
-        /* Modern Cards - Benefits */
-        .benefit-card { 
-            border: none; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            border-radius: 25px; background: white; height: 100%; transition: 0.3s;
-        }
-        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(44, 122, 123, 0.15); }
-        .benefit-card h4 { color: var(--teal); font-weight: 600; }
-        .benefit-card .icon-placeholder { font-size: 2.5rem; color: #4FD1C5; margin-bottom: 20px; }
-
-        /* Support Section Using page1extra.png */
-        .support-section { 
-            background-color: #f7fafc; padding: 80px 0; border-radius: 40px; 
-            margin: 50px 0;
-        }
-        
-        /* Professional Footer with Contact Info */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px 0;
-            margin-top: auto; /* Pushes footer to the bottom */
-        }
-        footer h5 { color: #4FD1C5; font-weight: 600; }
-        footer a { color: #b2f5ea; text-decoration: none; transition: 0.3s; }
-        footer a:hover { color: white; }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -66,8 +17,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" alt="Logo"> DIA-CARE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">
+                <img src="images/logo.png" alt="Logo"> DIA-CARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li><a class="nav-link active" href="index.html">Home</a></li>
@@ -94,7 +49,6 @@
     </header>
 
     <div class="container py-5 my-5 flex-grow-1">
-        
         <div class="row g-4 text-center mb-5 pb-5">
             <div class="col-md-4">
                 <div class="benefit-card">
@@ -119,7 +73,7 @@
             </div>
         </div>
 
-      <section class="support-section">
+        <section class="support-section">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 order-md-2 mb-4 mb-md-0">
@@ -137,7 +91,6 @@
                 </div>
             </div>
         </section>
-
     </div>
 
     <footer class="mt-auto">
@@ -185,21 +138,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function(){
-    // Smooth fade in for all page content
-    $('body').hide().fadeIn(800);
-
-    // jQuery effect for Navbar change on scroll
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 50) {
-            $('.navbar').css('background-color', '#E6FFFA');
-        } else {
-            $('.navbar').css('background-color', '#ffffff');
-        }
-    });
-});
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
