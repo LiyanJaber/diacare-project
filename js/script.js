@@ -1,62 +1,24 @@
-/* LOGIN LOGIC */
-function loginUser(){
-    let email=document.getElementById("email").value;
-    let pass=document.getElementById("password").value;
-    let msg=document.getElementById("loginMsg");
-    if(email===""||pass===""){
-        msg.innerText="Fill all fields";
-        msg.style.color="red";
-        return;
-    }
-    if(pass.length<6){
-        msg.innerText="Password too short";
-        msg.style.color="red";
-        return;
-    }
-    localStorage.setItem("user",email);
-    msg.innerText="Login success!";
-    msg.style.color="green";
-    setTimeout(()=>window.location.href="index.html",1000);
-}
+$(document).ready(function(){
+    // 1. Global Page Transitions
+    $('body').hide().fadeIn(800);
 
-/* TRACKER LOGIC */
-let sugarData = [];
-function checkSugar(){
-    let val=parseFloat(document.getElementById("sugarInput").value);
-    let box=document.getElementById("resultBox");
-    if(isNaN(val)){
-        box.innerHTML="Enter valid number";
-        return;
-    }
-    sugarData.push(val);
-    updateChart();
-    if(val<70){
-        box.className="result low";
-        box.innerHTML="LOW SUGAR - drink juice + rest";
-    } else if(val<=140){
-        box.className="result normal";
-        box.innerHTML="NORMAL - keep it up";
-    } else {
-        box.className="result high";
-        box.innerHTML="HIGH SUGAR - avoid sugar + see doctor";
-    }
-}
-
-/* CHART LOGIC */
-let chart;
-function updateChart(){
-    let ctx=document.getElementById("chart").getContext("2d");
-    if(chart) chart.destroy();
-    chart=new Chart(ctx,{
-        type:"line",
-        data:{
-            labels:sugarData.map((_,i)=>"Day "+(i+1)),
-            datasets:[{
-                label:"Blood Sugar",
-                data:sugarData,
-                borderColor:"#00e5ff",
-                fill:false
-            }]
+    // 2. Navbar Scroll Effect
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+            $('.navbar').css('background-color', '#E6FFFA');
+        } else {
+            $('.navbar').css('background-color', '#ffffff');
         }
     });
+
+    // 3. Account Page: Display Logged-in User
+    if($('#displayEmail').length) {
+        const savedEmail = sessionStorage.getItem("userEmail") || "Guest User";
+        $('#displayEmail').text(savedEmail);
+    }
+});
+
+// 4. Update Account Simulation
+function fakeUpdate() {
+    $('#updateMessage').fadeIn().delay(2000).fadeOut();
 }
