@@ -1,79 +1,44 @@
-/* --- GLOBAL STYLES --- */
-:root { 
-    --teal: #2C7A7B; 
-    --red: #E53E3E; 
-    --dark: #1A365D;
-}
+:root { --teal: #2C7A7B; --red: #E53E3E; --dark: #1A365D;}
+body { font-family: 'Poppins', sans-serif; background: #fcfcfc; color: #333; }
 
-body { 
-    font-family: 'Poppins', sans-serif; 
-    background: #fcfcfc; 
-    color: #333; 
-}
-
-/* --- COMPONENTS --- */
+/* The Red Medical Disclaimer */
 .disclaimer { 
-    background: #FFF5F5; 
-    border-bottom: 3px solid var(--red); 
-    color: var(--red); 
-    padding: 12px; 
-    text-align: center; 
-    font-weight: bold; 
-    position: sticky; 
-    top: 0; 
-    z-index: 2000; 
+    background: #FFF5F5; border-bottom: 3px solid var(--red); 
+    color: var(--red); padding: 12px; text-align: center; 
+    font-weight: bold; position: sticky; top: 0; z-index: 2000; 
 }
 
 .navbar-brand img { width: 40px; margin-right: 10px; }
 
+/* FIXED IMAGE PATHS (Added ../) */
+.hero { 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/page1default.png') center/cover;
+    height: 85vh; display: flex; align-items: center; color: white;
+}
+
 .btn-teal { 
-    background: var(--teal); 
-    color: white; 
-    border-radius: 30px; 
-    padding: 15px 40px; 
-    text-decoration: none; 
-    font-weight: 600; 
-    display: inline-block; 
-    transition: 0.3s; 
-    border: none; 
+    background: var(--teal); color: white; border-radius: 30px; 
+    padding: 15px 40px; text-decoration: none; font-weight: 600; 
+    display: inline-block; transition: 0.3s; border: none; font-size: 1.1rem;
 }
 .btn-teal:hover { background: var(--dark); color: white; transform: translateY(-3px); }
 
-/* --- HOME PAGE --- */
-.hero { 
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/page1default.png') center/cover;
-    height: 85vh; 
-    display: flex; 
-    align-items: center; 
-    color: white;
-}
-
 .benefit-card { 
-    border: none; 
-    padding: 40px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    border-radius: 25px; 
-    background: white; 
-    height: 100%; 
-    transition: 0.3s;
+    border: none; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    border-radius: 25px; background: white; height: 100%; transition: 0.3s;
 }
 .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(44, 122, 123, 0.15); }
 
-.support-section { background-color: #f7fafc; padding: 80px 0; border-radius: 40px; margin: 50px 0; }
-
-/* --- ACCOUNT PAGE --- */
-.account-card { 
-    background: white; 
-    border-radius: 20px; 
-    padding: 40px; 
-    margin-top: 50px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    border-top: 5px solid var(--teal); 
+.support-section { 
+    background-color: #f7fafc; padding: 80px 0; border-radius: 40px; 
+    margin: 50px 0;
 }
+
+/* ACCOUNT PAGE STYLES */
+.account-card { background: white; border-radius: 20px; padding: 40px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--teal); }
 .user-icon { font-size: 80px; color: var(--teal); margin-bottom: 20px; }
 .stats-box { background: #f0fdfa; border-radius: 12px; padding: 20px; border: 1px dashed var(--teal); }
 
-/* --- FOOTER --- */
 footer { background-color: var(--dark); color: white; padding: 60px 0 30px 0; }
 footer h5 { color: #4FD1C5; font-weight: 600; }
 footer a { color: #b2f5ea; text-decoration: none; }
