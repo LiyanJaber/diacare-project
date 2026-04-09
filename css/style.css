@@ -1,84 +1,77 @@
-/* --- GLOBAL STYLES --- */
-:root { 
-    --teal: #2C7A7B; 
-    --red: #E53E3E; 
-    --dark: #1A365D;
-}
-
-body { 
-    font-family: 'Poppins', sans-serif; 
-    background: #fcfcfc; 
-    color: #333; 
-}
-
-/* --- COMPONENTS --- */
-.disclaimer { 
-    background: #FFF5F5; 
-    border-bottom: 3px solid var(--red); 
-    color: var(--red); 
-    padding: 12px; 
-    text-align: center; 
-    font-weight: bold; 
-    position: sticky; 
-    top: 0; 
-    z-index: 2000; 
-}
-
-.navbar-brand img { width: 40px; margin-right: 10px; }
-
-/* FIXED IMAGE PATHS */
-.hero { 
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/page1default.png') center/cover;
-    height: 85vh; 
-    display: flex; 
-    align-items: center; 
+body {
+    margin: 0;
+    font-family: Arial;
     color: white;
 }
 
-.btn-teal { 
-    background: var(--teal); 
-    color: white; 
-    border-radius: 30px; 
-    padding: 15px 40px; 
-    text-decoration: none; 
-    font-weight: 600; 
-    display: inline-block; 
-    transition: 0.3s; 
-    border: none; 
-}
-.btn-teal:hover { background: var(--dark); color: white; transform: translateY(-3px); }
-
-.benefit-card { 
-    border: none; 
-    padding: 40px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    border-radius: 25px; 
-    background: white; 
-    height: 100%; 
-    transition: 0.3s;
-}
-.benefit-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(44, 122, 123, 0.15); }
-
-.support-section { 
-    background-color: #f7fafc; 
-    padding: 80px 0; 
-    border-radius: 40px; 
-    margin: 50px 0; 
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    position: sticky;
+    top: 0;
 }
 
-/* --- ACCOUNT PAGE --- */
-.account-card { 
-    background: white; 
-    border-radius: 20px; 
-    padding: 40px; 
-    margin-top: 50px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    border-top: 5px solid var(--teal); 
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
-.user-icon { font-size: 80px; color: var(--teal); margin-bottom: 20px; }
-.stats-box { background: #f0fdfa; border-radius: 12px; padding: 20px; border: 1px dashed var(--teal); }
 
-/* --- FOOTER --- */
-footer { background-color: var(--dark); color: white; padding: 60px 0 30px 0; }
-footer h5 { color: #4FD1C5; font-weight: 600; }
-footer a { color: #b2f5ea; text-decoration: none; }
+.navbar a:hover {
+    color: #00e5ff;
+}
+
+/* BACKGROUND HERO SYSTEM */
+.hero {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* PAGE BACKGROUND WRAPPER */
+.page {
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 40px;
+}
+
+/* GLASS CARDS */
+.container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+input, button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+button {
+    background: #00e5ff;
+    font-weight: bold;
+}
+
+.result {
+    margin-top: 10px;
+}
