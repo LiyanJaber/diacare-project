@@ -6,74 +6,75 @@
     <title>Dia-Care | Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #1A365D;}
-        body { font-family: 'Poppins', sans-serif; background: #fcfcfc; color: #333; }
-        
-        /* The Red Medical Disclaimer */
+        :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #1A365D; }
+
+        /* FIX 1: Fixes the giant logo issue */
+        .navbar-brand img { 
+            width: 40px !important; 
+            height: auto; 
+            margin-right: 10px; 
+        }
+
+        /* FIX 2: Restores the background and text visibility */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #fcfcfc; 
+            color: #333; 
+            margin: 0;
+            overflow-x: hidden;
+        }
+
         .disclaimer { 
             background: #FFF5F5; border-bottom: 3px solid var(--red); 
             color: var(--red); padding: 12px; text-align: center; 
             font-weight: bold; position: sticky; top: 0; z-index: 2000; 
         }
 
-        .navbar-brand img { width: 40px; margin-right: 10px; }
-        
-        /* The Hero Section */
+        /* FIX 3: Restores your Background Image */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/page1default.png') center/cover;
-            height: 85vh; display: flex; align-items: center; color: white;
+            height: 80vh; 
+            display: flex; 
+            align-items: center; 
+            color: white !important;
         }
 
         .btn-teal { 
-            background: var(--teal); color: white; border-radius: 30px; 
-            padding: 15px 40px; text-decoration: none; font-weight: 600; 
-            display: inline-block; transition: 0.3s; border: none; font-size: 1.1rem;
+            background: var(--teal); color: white !important; border-radius: 30px; 
+            padding: 12px 30px; text-decoration: none; font-weight: 600; 
+            display: inline-block; transition: 0.3s; border: none;
         }
-        .btn-teal:hover { background: var(--dark); color: white; transform: translateY(-3px); }
         
-        /* Modern Cards - Benefits */
         .benefit-card { 
             border: none; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
             border-radius: 25px; background: white; height: 100%; transition: 0.3s;
         }
-        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(44, 122, 123, 0.15); }
-        .benefit-card h4 { color: var(--teal); font-weight: 600; }
-        .benefit-card .icon-placeholder { font-size: 2.5rem; color: #4FD1C5; margin-bottom: 20px; }
 
-        /* Support Section Using page1extra.png */
         .support-section { 
-            background-color: #f7fafc; padding: 80px 0; border-radius: 40px; 
-            margin: 50px 0;
+            background-color: #f7fafc; padding: 60px 0; border-radius: 40px; margin: 40px 0; 
         }
-        
-        /* Professional Footer with Contact Info */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px 0;
-            margin-top: auto; /* Pushes footer to the bottom */
-        }
-        footer h5 { color: #4FD1C5; font-weight: 600; }
-        footer a { color: #b2f5ea; text-decoration: none; transition: 0.3s; }
-        footer a:hover { color: white; }
+
+        footer { background: var(--dark); color: white; padding: 40px 0; }
     </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
-    <div class="disclaimer">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT A DOCTOR FOR MEDICAL ADVICE.</div>
+    <div class="disclaimer">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT A DOCTOR.</div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" alt="Logo"> DIA-CARE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">
+                <img src="images/logo.png" alt="Logo"> DIA-CARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li><a class="nav-link active" href="index.html">Home</a></li>
-                    <li><a class="nav-link" href="knowledge.html">Knowledge</a></li>
-                    <li><a class="nav-link" href="guide.html">Guide</a></li>
                     <li><a class="nav-link" href="tracker.html">Tracker</a></li>
-                    <li><a class="nav-link" href="motivation.html">Motivation</a></li>
                     <li><a class="nav-link" href="portal.html">Login</a></li>
                 </ul>
             </div>
@@ -82,123 +83,50 @@
 
     <header class="hero">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1 class="display-3 fw-bold mb-4">Empowering Your <br><span style="color: #4FD1C5;">Diabetes Journey</span></h1>
-                    <p class="lead mb-5 fs-4">Friendly, science-backed guidance to help you understand, monitor, and manage your health with absolute clarity.</p>
-                    <a href="tracker.html" class="btn-teal">Analyze Your Levels</a>
-                </div>
-            </div>
+            <h1 class="display-3 fw-bold mb-3">Empowering Your <br>Diabetes Journey</h1>
+            <p class="lead mb-4 fs-4">Friendly guidance to help you monitor and manage your health.</p>
+            <a href="tracker.html" class="btn-teal">Analyze Your Levels</a>
         </div>
     </header>
 
-    <div class="container py-5 my-5 flex-grow-1">
-        
-        <div class="row g-4 text-center mb-5 pb-5">
+    <div class="container py-5">
+        <div class="row g-4 text-center">
             <div class="col-md-4">
                 <div class="benefit-card">
-                    <div class="icon-placeholder">🔬</div>
-                    <h4>Understand the Science</h4>
-                    <p class="text-muted">Master the biological basics. Explore diabetes types, insulin mechanics, and the latest clinical insights in simple terms.</p>
+                    <div style="font-size: 2.5rem;">🔬</div>
+                    <h4>Science</h4>
+                    <p class="text-muted">Master the biological basics in simple terms.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="benefit-card">
-                    <div class="icon-placeholder">📊</div>
-                    <h4>Visualize Your Trend</h4>
-                    <p class="text-muted">Enter your data and see the big picture. Our interactive chart transforms numbers into clear, manageable medical trends.</p>
+                    <div style="font-size: 2.5rem;">📊</div>
+                    <h4>Trends</h4>
+                    <p class="text-muted">Visualize your data with interactive charts.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="benefit-card">
-                    <div class="icon-placeholder">🍏</div>
-                    <h4>Discover Healthy Habits</h4>
-                    <p class="text-muted">Learn essential food tips, effective exercise advice, and daily life hacks tailored for a successful diabetic lifestyle.</p>
+                    <div style="font-size: 2.5rem;">🍏</div>
+                    <h4>Habits</h4>
+                    <p class="text-muted">Discover food tips and exercise advice.</p>
                 </div>
             </div>
         </div>
-
-      <section class="support-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 order-md-2 mb-4 mb-md-0">
-                        <img src="images/extra1image.png" class="img-fluid rounded-5 shadow-lg" alt="Dia-Care Support">
-                    </div>
-                    <div class="col-md-6 pe-md-5 order-md-1">
-                        <h2 class="fw-bold mb-3" style="color: var(--dark);">Fast Tracking. Clear Results.</h2>
-                        <p class="lead text-muted mb-4">
-                            Dia-Care is designed for simple, everyday use. It’s an easy way to check your blood sugar and glycated hemoglobin (HbA1c) levels instantly, giving you clear feedback without the complexity.
-                        </p>
-                        <p class="text-muted">
-                            <strong>Note:</strong> While this tool provides quick educational feedback for simple checks, always consult your doctor for medical diagnoses and treatment plans.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </div>
 
-    <footer class="mt-auto">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 text-center text-md-start">
-                    <h5>DIA-CARE</h5>
-                    <p class="small text-white-50">Your educational companion for diabetes wellness. Technology simplifies care.</p>
-                </div>
-                
-                <div class="col-md-6 col-lg-4 text-center text-md-start">
-                    <h5>Useful Links</h5>
-                    <div class="row small fw-semibold">
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="tracker.html">Track Levels</a></li>
-                                <li><a href="knowledge.html">Biotech Facts</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="guide.html">Food & Exercise</a></li>
-                                <li><a href="portal.html">User Portal</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 text-center text-md-start">
-                    <h5>Contact Us</h5>
-                    <ul class="list-unstyled small">
-                        <li>📧 &nbsp; <a href="mailto:support@diacare.org">support@diacare.org</a></li>
-                        <li>📞 &nbsp; <a href="tel:18003422273">+1 (800) DIA-CARE</a></li>
-                        <li>📍 &nbsp; <span class="text-white-50">Virtual Wellness Hub, CSC 322</span></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-            
-            <div class="text-center small text-white-50">
-                &copy; 2026 Dia-Care Platform. All rights reserved. CSC 322 Web Project.
-            </div>
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Dia-Care Platform. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function(){
-    // Smooth fade in for all page content
-    $('body').hide().fadeIn(800);
-
-    // jQuery effect for Navbar change on scroll
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 50) {
-            $('.navbar').css('background-color', '#E6FFFA');
-        } else {
-            $('.navbar').css('background-color', '#ffffff');
-        }
-    });
-});
-</script>
+    <script>
+        $(document).ready(function(){
+            $('body').hide().fadeIn(1000);
+        });
+    </script>
 </body>
 </html>
