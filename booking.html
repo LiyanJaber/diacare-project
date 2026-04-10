@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia-Care | Book Consultation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teal: #2C7A7B; --dark: #1A365D; --red: #E53E3E; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; color: #333; display: none; }
+        
+        .disclaimer-top { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 2000; }
+        
+        /* Logo Consistency Fix */
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 10px; }
+
+        .booking-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 40px; 
+            border-top: 5px solid var(--teal); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            margin-top: 20px;
+        }
+
+        .btn-teal { 
+            background: var(--teal); 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 10px; 
+            transition: 0.3s;
+        }
+        .btn-teal:hover { background: var(--dark); color: white; transform: translateY(-2px); }
+        
+        .form-label { color: var(--dark); margin-top: 10px; }
+        .form-control, .form-select { padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+
+    <div class="disclaimer-top">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT A DOCTOR.</div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">
+                <img src="images/logo.png" alt="Logo"> DIA-CARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold">
+                    <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="guide.html">Back to Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="booking-card">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold" style="color: var(--teal);">Book Specialist</h2>
+                        <p class="text-muted">Select your preferred time for a virtual consultation.</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Select Specialist</label>
+                        <select id="doctor" class="form-select">
+                            <option value="Dr. Sarah Johnson (Endocrinologist)">Dr. Sarah Johnson (Endocrinologist) - $50</option>
+                            <option value="Dr. Mike Ross (Nutritionist)">Dr. Mike Ross (Nutritionist) - $40</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Select Date</label>
+                        <input type="date" id="bookDate" class="form-control">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Select Time</label>
+                        <input type="time" id="bookTime" class="form-control">
+                    </div>
+
+                    <button class="btn btn-teal w-100 fw-bold shadow-sm" onclick="addToCart()">ADD TO CART & PROCEED</button>
+                    
+                    <div id="cartMsg" class="alert alert-success mt-3 text-center" style="display:none; border-radius: 10px;">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                        Added to cart! Redirecting...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('body').fadeIn(800);
+
+            // Set minimum date to today so users can't book in the past
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookDate').setAttribute('min', today);
+        });
+
+        function addToCart() {
+            let doc = $('#doctor').val();
+            let date = $('#bookDate').val();
+            let time = $('#bookTime').val();
+
+            if(!date || !time) {
+                alert("Please select both a date and a time for your consultation.");
+                return;
+            }
+
+            // Save booking details to sessionStorage for the payment page
+            sessionStorage.setItem("appointmentDoc", doc);
+            sessionStorage.setItem("appointmentDate", date);
+            sessionStorage.setItem("appointmentTime", time);
+
+            $('#cartMsg').slideDown();
+            
+            // Move to payment page after delay
+            setTimeout(() => {
+                window.location.href = "payment.html";
+            }, 1800);
+        }
+    </script>
+</body>
+</html>
