@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | Management Guide</title>
@@ -8,19 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #2D3748; }
-        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; }
-        .disclaimer-top { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 2000; }
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; display: none; /* For fade effect */ }
         
+        .disclaimer-top { 
+            background: #FFF5F5; border-bottom: 3px solid var(--red); 
+            color: var(--red); padding: 10px; text-align: center; 
+            font-weight: bold; position: sticky; top: 0; z-index: 2000; 
+        }
+        
+        /* Logo Consistency Fix */
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 8px; }
+
         .hero-banner { 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/page4default.png') center/cover; 
             height: 30vh; display: flex; align-items: center; color: white; text-align: center; 
         }
 
-        .guide-section { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid var(--teal); }
+        .guide-section { 
+            background: white; border-radius: 20px; padding: 30px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; 
+            border-left: 5px solid var(--teal); transition: 0.3s;
+        }
+        .guide-section:hover { transform: translateX(5px); }
+        
         h2 { color: var(--teal); font-weight: 600; margin-bottom: 15px; border-bottom: 1px solid #edf2f7; padding-bottom: 10px; }
         h4 { color: var(--dark); margin-top: 20px; font-weight: 600; }
-        .alert-box { background: #E6FFFA; border-radius: 10px; padding: 15px; margin-top: 10px; }
-        .doctor-warning { background: #fef2f2; border: 1px solid #fee2e2; border-radius: 15px; padding: 20px; color: #991b1b; }
+        
+        .doctor-warning { 
+            background: #fef2f2; border: 1px solid #fee2e2; border-radius: 15px; 
+            padding: 20px; color: #991b1b; 
+        }
+        
+        .btn-consult {
+            background-color: var(--red);
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-consult:hover {
+            background-color: #c53030;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -29,7 +57,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" width="35"> DIA-CARE</a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">
+                <img src="images/logo.png" alt="Logo"> DIA-CARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li><a class="nav-link" href="index.html">Home</a></li>
@@ -102,55 +135,45 @@
                     </div>
                 </div>
 
-                <div class="guide-section">
-                    <h2>3. Gestational Diabetes</h2>
-                    <p>Occurs during pregnancy; regular monitoring is essential.</p>
-                    <ul>
-                        <li>Small, frequent meals / High-fiber</li>
-                        <li>Lean proteins and dairy</li>
-                        <li>Prenatal yoga & light stretching</li>
-                    </ul>
-                </div>
-
-                <div class="guide-section bg-light border-0">
-                    <h2>General Guidelines</h2>
-                    <p><strong>Healthy Eating:</strong> Avoid excessive sugar, stay hydrated, and maintain consistent meal timings.</p>
-                    <p><strong>Physical Activity:</strong> Improves insulin sensitivity, weight control, and overall mood.</p>
-                </div>
-
                 <div class="p-4 rounded-4 text-white shadow-sm" style="background: var(--teal);">
                     <h4 class="text-white mt-0">Positive Living</h4>
-                    <p class="mb-0">Diabetes does not prevent you from living a full, active, and meaningful life. With proper care, awareness, and consistency, you can maintain your normal daily routines including work, travel, and sports.</p>
+                    <p class="mb-0">Diabetes does not prevent you from living a full, active, and meaningful life. With proper care and consistency, you can maintain your routines.</p>
                 </div>
 
                 <div class="mt-4 text-center">
-                    <p class="fw-semibold">Ready to get active? 
-                        <a href="https://youtu.be/ePylP2XmNRs?si=1TXr5yVwZ1ZLe1Gi" target="_blank" style="color: var(--teal); text-decoration: underline;">
-                            Click here for a guided Diabetes Exercise Workout on YouTube
+                    <div class="p-3 border rounded-4 bg-white shadow-sm">
+                        <p class="fw-semibold mb-2">Ready to get active?</p>
+                        <a href="https://youtu.be/ePylP2XmNRs" target="_blank" class="btn btn-outline-teal px-4 rounded-pill" style="color: var(--teal); border-color: var(--teal);">
+                            🏃 Open Diabetes Workout Video
                         </a>
-                    </p>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mt-4 mt-lg-0">
                 <div class="doctor-warning sticky-top" style="top: 100px;">
                     <h5 class="fw-bold">🚨 Medical Requirement</h5>
                     <hr>
-                    <p><strong>A doctor is a must.</strong> Diabetes management is highly individual.</p>
-                    <p class="small">Advice may vary based on your age, health condition, and current medications. <strong>Always</strong> follow your healthcare provider’s instructions strictly. Do not rely solely on general online advice.</p>
-                    <a href="portal.html" class="btn btn-outline-danger btn-sm w-100 mt-2">Book Consultation</a>
+                    <p><strong>A doctor is a must.</strong> Diabetes management is highly individual and requires professional clinical oversight.</p>
+                    <a href="booking.html" class="btn btn-consult btn-danger w-100 mt-2 fw-bold py-3">Book Consultation</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-white py-4">
+    <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center small">
             &copy; 2026 Dia-Care Hub. Built for educational excellence.
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('body').fadeIn(800);
+        });
+    </script>
 </body>
 </html>
