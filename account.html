@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | My Account</title>
@@ -9,25 +10,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --teal: #2C7A7B; --red: #E53E3E; }
-        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; display: none; }
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 10px; }
         .account-card { background: white; border-radius: 20px; padding: 40px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--teal); }
         .user-icon { font-size: 80px; color: var(--teal); margin-bottom: 20px; }
         .stats-box { background: #f0fdfa; border-radius: 12px; padding: 20px; border: 1px dashed var(--teal); }
-        .btn-teal { background: var(--teal); color: white; border: none; }
-        .btn-teal:hover { background: #236162; color: white; }
+        .btn-teal { background: var(--teal); color: white; border: none; transition: 0.3s; }
+        .btn-teal:hover { background: #1A365D; color: white; }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">DIA-CARE</a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" alt="Logo"> DIA-CARE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li><a class="nav-link" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="knowledge.html">Knowledge</a></li>
+                    <li><a class="nav-link" href="guide.html">Guide</a></li>
                     <li><a class="nav-link" href="tracker.html">Tracker</a></li>
+                    <li><a class="nav-link" href="motivation.html">Motivation</a></li>
                     <li><a class="nav-link active" href="account.html">My Account</a></li>
-                    <li><a class="nav-link" href="portal.html" onclick="sessionStorage.clear()">Logout</a></li>
+                    <li><a class="nav-link text-danger" href="portal.html" onclick="sessionStorage.clear()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -37,42 +43,35 @@
         <div class="row justify-content-center">
             <div class="col-md-7 text-center">
                 <div class="account-card">
-                    <div class="user-icon">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    
-                    <h2 class="fw-bold">Welcome!</h2>
+                    <div class="user-icon"><i class="fas fa-user-circle"></i></div>
+                    <h2 class="fw-bold">Welcome Back!</h2>
                     <p class="text-muted mb-4" id="displayEmail">User Portal</p>
                     
-                    <div class="row text-start g-3">
-                        <div class="col-12">
-                            <div class="stats-box text-center">
-                                <h6 class="mb-2 fw-bold" style="color: var(--teal);">Ready for your daily check?</h6>
-                                <p class="small mb-3">Head over to the tracker to log your latest glucose readings and stay on top of your health.</p>
-                                <a href="tracker.html" class="btn btn-sm btn-teal px-4">Go to Tracker</a>
-                            </div>
-                        </div>
+                    <div class="stats-box text-center mb-4">
+                        <h6 class="mb-2 fw-bold" style="color: var(--teal);">Health Status: Active</h6>
+                        <p class="small mb-3">Head over to the tracker to log your latest glucose readings.</p>
+                        <a href="tracker.html" class="btn btn-sm btn-teal px-4">Go to Tracker</a>
                     </div>
 
-                    <div id="updateMessage" class="alert alert-success mt-3" style="display:none;">
-                        Settings saved!
-                    </div>
-
-                    <button class="btn btn-outline-secondary w-100 mt-4 py-2" onclick="fakeUpdate()">Update Account Settings</button>
-                    <a href="portal.html" onclick="sessionStorage.clear()" class="btn btn-link mt-3 text-muted">Logout</a>
+                    <div id="updateMessage" class="alert alert-success mt-3" style="display:none;">Settings saved successfully!</div>
+                    <button class="btn btn-outline-secondary w-100 py-2" onclick="fakeUpdate()">Update Account Settings</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('.account-card').hide().fadeIn(800);
-
-            // Get the email from login session
-            const savedEmail = sessionStorage.getItem("userEmail") || "Guest User";
-            $('#displayEmail').text(savedEmail);
+            // Security Check: If no email in session, kick back to login
+            const savedEmail = sessionStorage.getItem("userEmail");
+            if(!savedEmail) {
+                window.location.href = "portal.html";
+            } else {
+                $('body').fadeIn(800);
+                $('#displayEmail').text(savedEmail);
+            }
         });
 
         function fakeUpdate() {
