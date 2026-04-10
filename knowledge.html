@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | Knowledge Hub</title>
@@ -8,9 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #2D3748; }
-        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; }
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; display: none; /* For fade effect */ }
+        
         .disclaimer { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 2000; }
         
+        /* Logo Consistency Fix */
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 10px; }
+
         /* Hero Banner */
         .banner { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/page2default.png') center/cover; 
@@ -18,14 +23,15 @@
         }
 
         /* Content Styling */
-        .info-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 5px solid var(--teal); }
+        .info-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 5px solid var(--teal); transition: 0.3s; }
+        .info-card:hover { transform: translateY(-5px); }
         h2, h3 { color: var(--dark); font-weight: 600; margin-bottom: 20px; }
         .type-badge { background: #E6FFFA; color: var(--teal); padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; display: inline-block; }
         
         /* Motivational Footer Section */
         .motivation-banner { background: var(--teal); color: white; border-radius: 25px; padding: 40px; margin-top: 50px; }
-        .list-style-teal li { margin-bottom: 10px; position: relative; list-style: none; }
-        .list-style-teal li::before { content: "✓"; color: var(--teal); font-weight: bold; margin-right: 10px; }
+        .list-style-teal li { margin-bottom: 10px; position: relative; list-style: none; padding-left: 25px; }
+        .list-style-teal li::before { content: "✓"; color: var(--teal); font-weight: bold; position: absolute; left: 0; }
     </style>
 </head>
 <body>
@@ -33,7 +39,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" width="35" alt="Logo"> DIA-CARE</a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" alt="Logo"> DIA-CARE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
@@ -66,26 +72,23 @@
 
                 <div class="info-card">
                     <h2>Primary Types</h2>
-                    
                     <div class="mb-4">
                         <span class="type-badge">Type 1</span>
-                        <p>An autoimmune condition where the immune system attacks insulin-producing cells in the pancreas. It usually develops in childhood and requires lifelong insulin therapy.</p>
+                        <p>An autoimmune condition where the immune system attacks insulin-producing cells. It usually develops in childhood and requires lifelong insulin therapy.</p>
                     </div>
-
                     <div class="mb-4">
                         <span class="type-badge">Type 2</span>
-                        <p>The most common type. It occurs when the body becomes resistant to insulin. It is often linked to lifestyle factors such as diet, inactivity, and weight.</p>
+                        <p>The most common type. It occurs when the body becomes resistant to insulin, often linked to lifestyle factors like diet and inactivity.</p>
                     </div>
-
                     <div>
                         <span class="type-badge">Gestational</span>
-                        <p>A temporary condition occurring during pregnancy. While it usually disappears after birth, it increases future risk for Type 2 diabetes.</p>
+                        <p>A temporary condition occurring during pregnancy. It increases future risk for Type 2 diabetes for both mother and child.</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="info-card" style="height: 92%;">
+                        <div class="info-card h-100">
                             <h3>Symptoms</h3>
                             <ul class="list-style-teal p-0">
                                 <li>Frequent urination</li>
@@ -97,7 +100,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="info-card" style="height: 92%;">
+                        <div class="info-card h-100">
                             <h3>Risk Factors</h3>
                             <ul class="list-style-teal p-0">
                                 <li>Genetic predisposition</li>
@@ -110,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="info-card">
+                <div class="info-card mt-4">
                     <h2>Management & Treatment</h2>
                     <p>While diabetes cannot always be cured, it can be effectively managed through:</p>
                     <div class="row text-center mt-3">
@@ -122,24 +125,23 @@
 
                 <div class="motivation-banner">
                     <h2 class="text-white">Living with Confidence</h2>
-                    <p>Living with diabetes requires responsibility, but it does not prevent you from leading a fulfilling life. Diabetes is not a barrier—it is a condition that requires balance and discipline.</p>
-                    <p class="mb-0">By maintaining healthy habits and following medical advice, you can reduce risks and live independently. You are in control of your journey!</p>
+                    <p>Living with diabetes requires responsibility, but it does not prevent you from leading a fulfilling life. You are in control of your journey!</p>
                 </div>
 
                 <div class="mt-4 text-center">
-                    <p class="fw-semibold" style="font-size: 1.1rem;">Want to learn more? 
-                        <a href="https://youtu.be/-B-RVybvffU?si=xG5r14c9fFnZylnt" target="_blank" style="color: var(--teal); text-decoration: underline;">
-                            Watch this video explaining Diabetes Mellitus on YouTube
+                    <div class="p-3 border rounded-4 bg-white shadow-sm">
+                        <p class="fw-semibold mb-2">Educational Resource:</p>
+                        <a href="https://youtu.be/-B-RVybvffU" target="_blank" class="btn btn-outline-danger px-4 rounded-pill">
+                            📺 Watch Diabetes Science Video
                         </a>
-                    </p>
+                    </div>
                 </div>
-
             </div>
 
-            <div class="col-lg-4">
-                <div class="info-card bg-light border-0">
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="info-card bg-light border-0 sticky-top" style="top: 100px;">
                     <h4>Quick Tips</h4>
-                    <p class="small">Regular glucose monitoring is the key to preventing long-term complications. Use our <a href="tracker.html" class="text-teal fw-bold">Tracker tool</a> to stay updated.</p>
+                    <p class="small">Regular monitoring is key. Use our <a href="tracker.html" class="fw-bold text-decoration-none" style="color: var(--teal);">Tracker tool</a> to stay updated.</p>
                     <hr>
                     <p class="small"><strong>Did you know?</strong> Walking for just 15 minutes after a meal can significantly lower your blood sugar spikes.</p>
                 </div>
@@ -149,10 +151,16 @@
 
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
-            <p class="mb-0 small">&copy; 2026 Dia-Care Educational Hub. All medical info should be verified with a professional.</p>
+            <p class="mb-0 small">&copy; 2026 Dia-Care Educational Hub. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('body').fadeIn(800);
+        });
+    </script>
 </body>
 </html>
