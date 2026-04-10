@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root { --teal: #2C7A7B; --red: #E53E3E; }
-        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; }
-        .disclaimer { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; }
-        .portal-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 50px auto; max-width: 800px; }
-        .sidebar-img { background: url('images/page6default.png') center/cover; min-height: 400px; }
-        .btn-teal { background: var(--teal); color: white; border: none; transition: 0.3s; }
-        .btn-teal:hover { background: #236162; color: white; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; display: none; }
+        .disclaimer { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 2000; }
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 10px; }
+        .portal-card { background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: 50px auto; max-width: 850px; }
+        .sidebar-img { background: url('images/page6default.png') center/cover; min-height: 450px; }
+        .btn-teal { background: var(--teal); color: white; border: none; transition: 0.3s; padding: 12px; border-radius: 10px; }
+        .btn-teal:hover { background: #1A365D; transform: scale(1.02); color: white; }
+        .form-control { padding: 12px; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <div class="disclaimer">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT A DOCTOR. [cite: 61]</div>
+    <div class="disclaimer">⚠️ EDUCATIONAL TOOL ONLY. ALWAYS CONSULT A DOCTOR.</div>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" width="35"> DIA-CARE</a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" alt="Logo"> DIA-CARE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
@@ -37,43 +41,29 @@
 
     <div class="container">
         <div class="row portal-card g-0">
-            <div class="col-md-5 sidebar-img"></div>
+            <div class="col-md-5 sidebar-img d-none d-md-block"></div>
             <div class="col-md-7 p-5">
-                <h2 class="fw-bold mb-4" style="color: var(--teal);">Sign up / Login</h2>
+                <h2 class="fw-bold mb-4" style="color: var(--teal);">Sign In</h2>
                 <form id="loginForm">
-                    <input type="email" id="email" class="form-control mb-3" placeholder="Email" required>
+                    <input type="email" id="email" class="form-control mb-3" placeholder="Email Address" required>
                     <input type="password" id="password" class="form-control mb-3" placeholder="Password" required>
                     <button type="submit" class="btn btn-teal w-100 py-2 fw-bold">Enter Portal</button>
                 </form>
-                <p class="mt-4 text-center small text-muted">By entering, you agree to our educational terms. [cite: 61]</p>
+                <p class="mt-4 text-center small text-muted">By entering, you agree to our educational terms.</p>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function(){
-            // jQuery Implementation: Smooth UI transition 
-            $('.portal-card').hide().fadeIn(1000);
-
+            $('body').fadeIn(800);
             $('#loginForm').on('submit', function(e){
                 e.preventDefault();
-
                 const email = $('#email').val();
-                const password = $('#password').val();
-
-                if(email !== "" && password !== "") {
-                    // STORE THE EMAIL so the account page can show it
-                    sessionStorage.setItem("userEmail", email);
-                    
-                    // Redirect to the Account page [cite: 19]
-                    window.location.href = "account.html";
-                } else {
-                    alert("Please enter your credentials. [cite: 18]");
-                }
+                sessionStorage.setItem("userEmail", email);
+                window.location.href = "account.html";
             });
         });
     </script>
