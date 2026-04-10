@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dia-Care | Motivation</title>
@@ -8,9 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --teal: #2C7A7B; --red: #E53E3E; --dark: #2D3748; }
-        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; }
-        .disclaimer-top { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; }
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; color: #4A5568; display: none; /* For fade effect */ }
         
+        .disclaimer-top { background: #FFF5F5; border-bottom: 3px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; position: sticky; top: 0; z-index: 2000; }
+        
+        /* Logo Consistency Fix */
+        .navbar-brand img { width: 35px !important; height: auto !important; margin-right: 10px; }
+
         .hero-section { background: var(--teal); color: white; padding: 60px 0; text-align: center; margin-bottom: 40px; }
         .journal-box { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
@@ -18,7 +23,7 @@
         textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 10px rgba(44, 122, 123, 0.1); }
         
         .btn-post { background: var(--teal); color: white; border: none; padding: 12px 40px; border-radius: 30px; font-weight: 600; margin-top: 20px; transition: 0.3s; }
-        .btn-post:hover { background: #236162; transform: translateY(-2px); }
+        .btn-post:hover { background: #1A365D; transform: translateY(-2px); }
 
         #response-card { display: none; margin-top: 40px; animation: fadeIn 0.8s ease; }
         .warm-message { background: #f0fff4; border-left: 5px solid #38a169; padding: 30px; border-radius: 15px; }
@@ -33,7 +38,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);"><img src="images/logo.png" width="35"> DIA-CARE</a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--teal);">
+                <img src="images/logo.png" alt="Logo"> DIA-CARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto fw-semibold">
                     <li><a class="nav-link" href="index.html">Home</a></li>
@@ -49,8 +59,8 @@
 
     <div class="hero-section">
         <div class="container">
-            <h1 class="fw-bold">How are you feeling?</h1>
-            <p class="lead">Write down your thoughts. This space is just for you.</p>
+            <h1 class="fw-bold text-white">How are you feeling today?</h1>
+            <p class="lead text-white">Write down your thoughts. This space is just for you.</p>
         </div>
     </div>
 
@@ -58,17 +68,27 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="journal-box">
-                    <textarea id="userInput" rows="6" placeholder="Type as much as you want here..."></textarea>
+                    <textarea id="userInput" rows="6" placeholder="Express your feelings, challenges, or wins here..."></textarea>
                     <div class="text-end">
-                        <button class="btn-post" onclick="showMessage()">Post</button>
+                        <button class="btn-post" onclick="showMessage()">Post Entry</button>
                     </div>
 
                     <div id="response-card">
-                        <div class="warm-message">
-                            <h4 class="fw-bold" style="color: #2f855a;">You’re doing great.</h4>
-                            <p class="mb-0" style="font-size: 1.1rem;">Taking care of yourself is a big win, and you’re already doing it. It’s all about finding that balance that works for you so you can get back to doing what you love. No stress, no pressure—just you staying on top of your game and living your best life. You’ve got this handled, so keep that positive energy going. We’re just here to make the simple stuff even easier for you.</p>
+                        <div class="warm-message shadow-sm">
+                            <h4 class="fw-bold" style="color: #2f855a;">You’re doing better than you think.</h4>
+                            <p class="mb-0" style="font-size: 1.1rem; line-height: 1.6;">
+                                Taking care of yourself is a big win, and you’re already doing it. 
+                                It’s all about finding that balance that works for you so you can get back to doing what you love. 
+                                No stress, no pressure—just you staying on top of your game and living your best life. 
+                                You’ve got this handled, so keep that positive energy going. We’re here to help make things simpler for you.
+                            </p>
                             
-                            <p class="private-note">No one will be able to read what you wrote; this is just to help you feel better. If you ever feel like you need to talk to someone, feel free to reach out to us at <a href="mailto:support@diacare.org" style="color: var(--teal);">support@diacare.org</a>.</p>
+                            <hr>
+                            <p class="private-note">
+                                🔒 <strong>Privacy Note:</strong> Your entries are private and not stored on our servers. 
+                                This is a safe space for your reflection. If you need support, reach out at 
+                                <a href="mailto:support@diacare.org" style="color: var(--teal); font-weight: bold;">support@diacare.org</a>.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -76,15 +96,33 @@
         </div>
     </div>
 
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 small">&copy; 2026 Dia-Care Educational Hub. Your mental health matters.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
+        $(document).ready(function(){
+            $('body').fadeIn(800);
+        });
+
         function showMessage() {
             const input = document.getElementById('userInput').value;
             if(input.trim() !== "") {
-                document.getElementById('response-card').style.display = "block";
-                // Optionally clear the input so they feel it's "sent into the void"
-                // document.getElementById('userInput').value = "";
+                const card = document.getElementById('response-card');
+                card.style.display = "block";
+                
+                // Smooth scroll to message
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Clear input to simulate "submitting" the feeling
+                document.getElementById('userInput').value = "";
             } else {
-                alert("Write a little something first!");
+                alert("Please share a thought or feeling first!");
             }
         }
     </script>
